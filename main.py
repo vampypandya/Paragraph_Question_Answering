@@ -7,7 +7,7 @@ import nltk.tag.stanford as st
 import os.path
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-tagger = st.StanfordNERTagger('/home/vampy/Documents/projects/rinx/dependencies/stanford-ner-2016-10-31/classifiers/english.muc.7class.distsim.crf.ser.gz','/home/vampy/Documents/projects/rinx/dependencies/stanford-ner-2016-10-31/stanford-ner.jar')
+tagger = st.StanfordNERTagger('Dependency/english.muc.7class.distsim.crf.ser.gz','Dependency/stanford-ner.jar')
 
 fil=sys.argv[1]
 det=open(fil,'r').read()
@@ -30,7 +30,7 @@ def findSimilarity(sentences,question):
     an_file=open('input_answer.txt','w')
     an_file.write(req_sent)
     an_file.close()
-    qq=os.popen("java -mx600m -cp '*:lib/*' edu.stanford.nlp.ie.crf.CRFClassifier -loadClassifier /home/vampy/Documents/projects/rinx/dependencies/stanford-ner-2016-10-31/classifiers/english.muc.7class.distsim.crf.+ser.gz -textFile input_answer.txt -outputFormat slashTags 2> /dev/null").read()
+    qq=os.popen("java -mx600m -cp '*:lib/*' edu.stanford.nlp.ie.crf.CRFClassifier -loadClassifier Dependency/english.muc.7class.distsim.crf.+ser.gz -textFile input_answer.txt -outputFormat slashTags 2> /dev/null").read()
     
     
     arr=str(qq).split(" ")
